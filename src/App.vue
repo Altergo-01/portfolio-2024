@@ -1,5 +1,5 @@
 <script  >
-import { RouterLink, RouterView } from 'vue-router'
+ 
 import NavBar from './components/NavBar.vue';
 import ContentSwitch from './components/ContentSwitch.vue';
 export default {
@@ -9,9 +9,15 @@ export default {
     },
     data() {
         return {
+          activeButton: null,
         }
     },
     methods: {
+
+      handleSwitch(buttonText){
+        this.activeButton = buttonText;
+         console.log(this.activeButton, "AAAAAAAAAAAAAAAAAAAAH  ")
+      }
             
     },
 
@@ -20,8 +26,8 @@ export default {
 
 <template>
 
-  <NavBar></NavBar>
-  <ContentSwitch></ContentSwitch>
+  <NavBar @switch="handleSwitch"></NavBar>
+  <ContentSwitch :activeButton="this.activeButton"></ContentSwitch>
    
 </template>
 

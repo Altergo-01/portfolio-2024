@@ -1,7 +1,10 @@
 <script>
 import gsap from 'gsap';
 import { onMounted, ref } from 'vue';
+ 
 export default {
+
+    emits: ['switch'],
     data() {
         return {
             activeButton: "hey",
@@ -13,6 +16,9 @@ export default {
         handleClick(buttonText) {
             this.activeButton = buttonText;
             this.animateHighlight();
+            this.$emit('switch', buttonText)
+      
+
         },
   
         animateHighlight() {
@@ -46,18 +52,19 @@ export default {
 
 
 <template>
+    
   <nav class="sidebar">
     <div class="nav-item" :class="{ active: activeButton === 'hey' }">
-      <a href="#hey"    @click="handleClick('hey')"><span>Hey</span></a>
+      <a href="#hey"    @click="handleClick('hey') "><span>Hey</span></a>
     </div>
     <div class="nav-item" :class="{ active: activeButton === 'me' }">
-      <a href="#me" @click="handleClick('me')"><span>me</span></a>
+      <a href="#me" @click="handleClick('me') "><span>me</span></a>
     </div>
     <div class="nav-item" :class="{ active: activeButton === 'work' }">
-      <a href="#work" @click="handleClick('work')"><span>work</span></a>
+      <a href="#work" @click="handleClick('work') "><span>work</span></a>
     </div>
     <div class="nav-item" :class="{ active: activeButton === 'us' }">
-      <a href="#us" @click="handleClick('us')"> <span>us</span></a>
+      <a href="#us" @click="handleClick('us') "> <span>us</span></a>
     </div>
     <div class="highlight-box" v-if="activeButton">
       <div class="highlight-content">
