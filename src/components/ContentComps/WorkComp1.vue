@@ -32,7 +32,7 @@ export default {
 
 
 <template>
-    <img src="" alt="">
+    <img src="@/assets/project_wallpaper/random1.jpg" alt="">
 </template>
   
 <style>

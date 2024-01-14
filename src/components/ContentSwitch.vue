@@ -92,6 +92,7 @@ export default {
 }
 .switch-set-hey article:nth-child(2){
   width: 25%;
+  height: 60%;
   background-color: rgb(118, 250, 10);
 
 }
@@ -111,7 +112,9 @@ export default {
   }
   .switch-set-me article:nth-child(2){
     width: 50%;
+    height: 50%;
     background-color: rgb(118, 250, 10);
+    transition: 0.5s;
   
   }
 
@@ -128,8 +131,12 @@ export default {
   }
   .switch-set-work article:nth-child(2){
     width: 15%;
+    height: 80%;
     background-color: rgb(118, 250, 10);
-  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.5s;
   }
 
 /*==== CLASS SET FOUR  || US   || =======*/
@@ -145,6 +152,7 @@ export default {
   }
   .switch-set-us article:nth-child(2){
     width: 50%;
+    height: 70%;
     background-color: rgb(118, 250, 10);
   
   }
