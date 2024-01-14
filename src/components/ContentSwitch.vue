@@ -3,15 +3,37 @@ import gsap from 'gsap';
 import { onMounted, ref } from 'vue';
 import { useSession } from "@/stores/session"
 import { mapState, mapActions } from "pinia";
-
-
+import HeyComp1 from './ContentComps/HeyComp1.vue'
+import HeyComp2 from './ContentComps/HeyComp2.vue'
+import MeComp1 from './ContentComps/MeComp1.vue';
+import MeComp2 from '@/components/ContentComps/MeComp2.vue'
+import WorkComp1 from './ContentComps/WorkComp1.vue';
+import WorkComp2 from './ContentComps/Workcomp2.vue'
+import UsComp1 from './ContentComps/Uscomp1.vue'
+import UsComp2 from './ContentComps/Uscomp2.vue'
 export default {
 
     props: ['activeButton'],
+    components: {
+      HeyComp1,
+      HeyComp2,
+      MeComp1,
+      MeComp2,
+      WorkComp1,
+      WorkComp2,
+      UsComp1,
+      UsComp2
+    },
     data() {
         return {
           switch_class:'switch-set-1',
-          activeB : this.activeButton,
+          tabComponent: {
+            hey: ['HeyComp1','HeyComp2' ],
+            me: ['MeComp1','MeComp2' ],
+            work: ['WorkComp1','WorkComp2' ],
+            us: ['UsComp1','UsComp2' ],
+
+          },
         }
     },
     methods: {
@@ -30,9 +52,14 @@ export default {
 
 
 <template>
-    <div id="pin-switch" class="container-switcher" :class="switch_class">
-      <div class="switchers content-1">{{ this.activeButton }}</div>
-      <div class="switchers content-2">CONTENT 2</div>
+    <div id="pin-switch" class="container-switcher" :class="'switch-set-'+this.activeButton ">
+      <article class="switchers content-1"> 
+        <component :is="tabComponent[this.activeButton][0]"  ></component>
+      </article>
+
+      <article class="switchers content-2"> 
+        <component :is="tabComponent[this.activeButton][1]"  ></component>
+      </article>
     </div>
 </template>
   
@@ -44,24 +71,26 @@ export default {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  transition: 0.5s all;
 }
 
 .switchers{
   border: 3px black solid;
+  transition: 0.5s all; 
 }
 
 /*==== CLASS SET ONE   ||  HEY || =======*/
 
-.switch-set-1{
+.switch-set-hey{
    
 }
 
-.switch-set-1 :nth-child(1){
+.switch-set-hey article:nth-child(1){
   width: 50%;
   background-color: aqua;
 
 }
-.switch-set-1 :nth-child(2){
+.switch-set-hey article:nth-child(2){
   width: 25%;
   background-color: rgb(118, 250, 10);
 
@@ -71,16 +100,16 @@ export default {
 
 /*==== CLASS SET TWO   ||  ME  || =======*/
 
-.switch-set-2{
+.switch-set-me{
    
   }
   
-  .switch-set-2 :nth-child(1){
+  .switch-set-me article:nth-child(1){
     width: 20%;
     background-color: aqua;
   
   }
-  .switch-set-2 :nth-child(2){
+  .switch-set-me article:nth-child(2){
     width: 50%;
     background-color: rgb(118, 250, 10);
   
@@ -88,16 +117,16 @@ export default {
 
 /*==== CLASS SET THREE || WORK || =======*/
 
-.switch-set-3{
+.switch-set-work{
    
   }
   
-  .switch-set-3 :nth-child(1){
+  .switch-set-work article:nth-child(1){
     width: 70%;
     background-color: aqua;
   
   }
-  .switch-set-3 :nth-child(2){
+  .switch-set-work article:nth-child(2){
     width: 15%;
     background-color: rgb(118, 250, 10);
   
@@ -105,16 +134,16 @@ export default {
 
 /*==== CLASS SET FOUR  || US   || =======*/
 
-.switch-set-4{
+.switch-set-us{
    
   }
   
-  .switch-set-4 :nth-child(1){
+  .switch-set-us article:nth-child(1){
     width: 50%;
     background-color: aqua;
   
   }
-  .switch-set-4 :nth-child(2){
+  .switch-set-us article:nth-child(2){
     width: 50%;
     background-color: rgb(118, 250, 10);
   
