@@ -1,7 +1,12 @@
 @import './base.css';
 
  
- 
+.cutCorner{
+    background-image: url('../assets/project_wallpaper/backRect.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
 
 @media (hover: hover) {
  

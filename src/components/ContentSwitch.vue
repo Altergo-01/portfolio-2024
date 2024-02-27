@@ -1,46 +1,26 @@
 <script>
-import gsap from 'gsap';
-import { onMounted, ref } from 'vue';
-import { useSession } from "@/stores/session"
-import { mapState, mapActions } from "pinia";
-import HeyComp1 from './ContentComps/HeyComp1.vue'
-import HeyComp2 from './ContentComps/HeyComp2.vue'
-import MeComp1 from './ContentComps/MeComp1.vue';
-import MeComp2 from '@/components/ContentComps/MeComp2.vue'
-import WorkComp1 from './ContentComps/WorkComp1.vue';
-import WorkComp2 from './ContentComps/Workcomp2.vue'
-import UsComp1 from './ContentComps/Uscomp1.vue'
-import UsComp2 from './ContentComps/Uscomp2.vue'
+ 
+ 
+ 
 export default {
 
     props: ['activeButton'],
     components: {
-      HeyComp1,
-      HeyComp2,
-      MeComp1,
-      MeComp2,
-      WorkComp1,
-      WorkComp2,
-      UsComp1,
-      UsComp2
+ 
     },
     data() {
         return {
           switch_class:'switch-set-1',
-          tabComponent: {
-            hey: ['HeyComp1','HeyComp2' ],
-            me: ['MeComp1','MeComp2' ],
-            work: ['WorkComp1','WorkComp2' ],
-            us: ['UsComp1','UsComp2' ],
-
-          },
+          componentRender : this.activeButton,
+ 
+ 
         }
     },
     methods: {
         
     },
     mounted() {
-      
+    
        
   
     },
@@ -52,14 +32,11 @@ export default {
 
 
 <template>
-    <div id="pin-switch" class="container-switcher" :class="'switch-set-'+this.activeButton ">
-      <article class="switchers content-1"> 
-        <component :is="tabComponent[this.activeButton][0]"  ></component>
-      </article>
+ 
 
-      <article class="switchers content-2"> 
-        <component :is="tabComponent[this.activeButton][1]"  ></component>
-      </article>
+    <div class="container-switcher">
+      <div> <slot name="left"></slot> </div>
+      <div> <slot name="right"></slot> </div>
     </div>
 </template>
   
@@ -71,6 +48,7 @@ export default {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  
   transition: 0.5s all;
 }
 
