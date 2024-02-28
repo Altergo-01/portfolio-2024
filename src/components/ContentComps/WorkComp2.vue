@@ -36,6 +36,7 @@ export default {
 <div class="drop_container">
     <div class="main_item drop_item">
         <svg width="144" height="144" viewBox="0 0 144 144" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <clipPath id=""></clipPath>
             <path id="lozengeClip" d="M68.0088 142.962L1.77295 76.7263V68.0088L68.0088 1.77295H76.7263L142.962 68.0088V76.7263L76.7263 142.962H68.0088Z" stroke="white" stroke-width="2"/>
             <image href="@/assets/project_wallpaper/random1.jpg" height="6vw" width="6vw" clip-path="url('#lozengeClip')"/>
         </svg>
