@@ -1,10 +1,5 @@
 <script>
  
-import { onMounted, ref } from 'vue';
- 
- 
-
-
 export default {
 
      
@@ -32,8 +27,12 @@ export default {
 
 
 <template>
-    <div>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH</div>
+    <div class="img-holder">
+        <img src="../../assets/project_wallpaper/portrait2.jpg"   alt="">
+    </div>
 </template>
   
 <style>
+
+ 
 </style>

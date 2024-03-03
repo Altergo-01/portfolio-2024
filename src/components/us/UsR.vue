@@ -1,10 +1,5 @@
 <script>
  
-import { onMounted, ref } from 'vue';
- 
- 
-
-
 export default {
 
      
@@ -32,8 +27,14 @@ export default {
 
 
 <template>
-    <div>AAAAAAAAAOOOOOOOOOAERGAERGARGERGAERGAAAAAAAAAAAAAAH</div>
+ <div class="cutCorner mainDivs"></div>
 </template>
   
 <style>
+.mainDivs{
+    width: 100%;
+    height: 100%;
+   
+}
+ 
 </style>

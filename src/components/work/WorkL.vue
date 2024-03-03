@@ -1,10 +1,5 @@
 <script>
  
-import { onMounted, ref } from 'vue';
- 
- 
-
-
 export default {
 
      
@@ -32,8 +27,12 @@ export default {
 
 
 <template>
-    <div>AAAAezqzaezrgqhtreytrjertuyH</div>
+    <article class="switchers content-1 div1"> 
+        heeeyyy
+    </article>
 </template>
   
 <style>
+
+ 
 </style>
