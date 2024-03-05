@@ -25,7 +25,7 @@
 
 body {
   min-height: 100vh; 
-  margin: 0 0 0 8%;
+  margin: 0 0 0 6%;
   transition:
     color 0.5s,
     background-color 0.5s;
@@ -33,4 +33,16 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(103deg, #3E3E40 0%, #18181A 79.67%, #18181A 93.04%, #1C1717 95.01%);
+  color: white;
+  font-family: "Jura", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  overflow-y: hidden;
+}
+
+.jura-font {
+  font-family: "Jura", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
 }

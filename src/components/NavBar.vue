@@ -1,36 +1,26 @@
 <script>
 import gsap from 'gsap';
 import { onMounted, ref } from 'vue';
+ 
 export default {
+
+    emits: ['switch'],
     data() {
         return {
             activeButton: "hey",
             topOffset: 0,
-            
+              
         }
     },
     methods: {
         handleClick(buttonText) {
             this.activeButton = buttonText;
-            this.animateHighlight();
-        },
-  
-        animateHighlight() {
-            const highlightBox = this.$el.querySelector('.highlight-box');
-            const highlightContent = highlightBox.querySelector('.highlight-content');
-
+        
+            this.$emit('switch', buttonText)
             const targetButton = this.$el.querySelector(`a[href="#${this.activeButton}"]`);
-            const targetButtonTop = targetButton.offsetTop;
-            console.log(targetButton, "le bouton cliqué /// ", targetButtonTop, "la distance du top.")
-            
+            this.topOffset = targetButton.offsetTop;
 
-            highlightContent.style.transition = `transform 0.4s ease-in-out`;
-
-            highlightContent.style.transform = `translateY(${targetButtonTop }px)`;
-
-            this.topOffset = targetButtonTop;
         },
-    
     },
 
     mounted() {
@@ -46,25 +36,29 @@ export default {
 
 
 <template>
+    
   <nav class="sidebar">
     <div class="nav-item" :class="{ active: activeButton === 'hey' }">
-      <a href="#hey"    @click="handleClick('hey')"><span>Hey</span></a>
+      <a href="#hey"    @click="handleClick('hey') "><span>Hey</span></a>
     </div>
     <div class="nav-item" :class="{ active: activeButton === 'me' }">
-      <a href="#me" @click="handleClick('me')"><span>me</span></a>
+      <a href="#me" @click="handleClick('me') "><span>me</span></a>
     </div>
     <div class="nav-item" :class="{ active: activeButton === 'work' }">
-      <a href="#work" @click="handleClick('work')"><span>work</span></a>
+      <a href="#work" @click="handleClick('work') "><span>work</span></a>
     </div>
     <div class="nav-item" :class="{ active: activeButton === 'us' }">
-      <a href="#us" @click="handleClick('us')"> <span>us</span></a>
+      <a href="#us" @click="handleClick('us') "> <span>us</span></a>
     </div>
-    <div class="highlight-box" v-if="activeButton">
-      <div class="highlight-content">
+    <div class="highlight-box" v-if="activeButton"  >
+      <div class="highlight-content" :style="{ transform: 'translateY(' + this.topOffset + 'px)' }"  ></div>
         
     </div>
-    </div>
+   
   </nav>
+
+ 
+
 </template>
   
 <style>
@@ -73,8 +67,8 @@ export default {
 
 /*=====================*/
 .sidebar {
-  background-color: #f2f2f2;
-   
+  background-color: #ffffff04;
+  border-right: white 1px solid;
   display: flex;
   flex-direction: column;
 }
@@ -82,8 +76,7 @@ export default {
 .nav-item {
     width: 100%; 
     height: 10vh; 
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
+
  
  
 }
@@ -99,23 +92,24 @@ export default {
 }
 
 .nav-item a span{
-    color: #ff0101;
+    color: #00ff15;
 }
 
 .highlight-box {
    
     position: absolute;
-     
+  
     width: 100%;
     height: 10vh;
     z-index: -1;
-}
+ }
 
 .highlight-content {
   text-align: center;
-  background-color: #ff0101;
+  background-color: #ff010165;
   width: 100%;
   height: 100%;
+  transition: 0.25s all;
 }
 /*=====================*/
 
@@ -131,10 +125,7 @@ nav{
 }
 
 
-
-.highlight-content{
-    background-color: rgba(127, 255, 212, 0.486);
-}
+ 
 
 @media (min-width: 1024px) {
     .about {
