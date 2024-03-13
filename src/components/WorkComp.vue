@@ -16,6 +16,12 @@ export default {
     methods: {
         test(){
             console.log("yes")
+        },
+
+        runAnimation() {
+
+          this.$refs.boxLanguage.classList.add('rotate-animation');
+
         }
     },
     mounted() {
@@ -39,7 +45,7 @@ export default {
       <article class="switchers content-2 div2"> 
           <div class="drop_container">
                 <div class="main_item drop_item">
-                    <div class="box-language">
+                    <div class="box-language" ref="boxLanguage" @click="runAnimation">
 
                     </div>
  
@@ -53,7 +59,7 @@ export default {
                     <path id="myPath" d="M49 96L54 101.5L49 107L44 101.5L49 96Z" fill="#D9D9D9"/>
                     <defs>
                         <pattern id="img1" patternUnits="userSpaceOnUse" width="100" height="100">
-                            <image href="../assets/project_wallpaper/Fq4aiOKWYAIQdfJ.jpg" x="-40" y="0" width="180" height="180"/>
+                            <image href="../assets/project_wallpaper/squareTest.png" x="-40" y="0" width="180" height="180"/>
                         </pattern>
                         <linearGradient id="paint0_linear_1831_47" x1="49" y1="0.000214746" x2="49" y2="97.0152" gradientUnits="userSpaceOnUse">
                             <stop stop-color="#8FAD39" stop-opacity="0"/>
@@ -92,17 +98,9 @@ export default {
 }
 
 
-@keyframes rotate {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  }
   #myPath:hover {
-    animation: rotate 3s linear infinite;
-    transform-origin: center;
+    /*animation: rotate 3s linear infinite;
+    transform-origin: center;*/
   }
 
    
@@ -136,20 +134,44 @@ export default {
   transition: 0.5s;
 }
 
-
-
-
-
-
-
 .box-language{
-    height: 10vh;
-    background-image: url(/src/assets/project_wallpaper/random1.jpg);
-    width: 10vh;
- 
-    clip-path: polygon(10% 0%, 90% 0%, 100% 10%, 100% 90%, 90% 100%, 10% 100%, 0% 90%, 0% 10%);
-    transform: rotate(45deg);
+    height: 12vh;
+    width: 12vh;
+    transition: 0.3s;
+    clip-path: polygon(45% 0, 55% 0, 100% 45%, 100% 55%, 55% 100%, 45% 100%, 0 55%, 0 45%);
+    
 }
+.box-language::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-image: url(/src/assets/project_wallpaper/random1.jpg);  
+  background-size:contain;
+  background-repeat: no-repeat;
+}
+
+.box-language:hover{
+  height: 10vh;
+  width: 10vh;
+  margin: 10% 0 0 0;
+}
+
+.rotate-animation{
+  animation: rotate 0.4s forwards;
+  transform-origin: center;
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); } 
+
+
+    100% { transform: rotate(360deg);}
+
+  }
 
 .drop_container{
     display: flex;
@@ -160,6 +182,7 @@ export default {
     width: 50%;
     height: 100%;
     transition: 0.5s;
+
 }
 
 .drop_item{
@@ -167,12 +190,13 @@ export default {
 }
 
 .main_item {
-    height: 8vw;
+    height:9vw;
     width: 6vw;
     position: relative;
     display: flex;
     align-items: flex-start; 
     justify-content: center;
+    padding: 0 0 0 0;
 }
 
 .main_item svg{
@@ -202,6 +226,7 @@ export default {
     background-image: url(src/assets/others/ornament_lang.png);
     background-repeat: no-repeat;
     background-size: contain;
+    background-position: center;
 }
 
 .project_item{
